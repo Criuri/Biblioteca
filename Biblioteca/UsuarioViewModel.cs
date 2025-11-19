@@ -106,7 +106,8 @@ namespace Biblioteca
         }
         private bool CanExecuteGuardar(object parameter)
         {
-            return !string.IsNullOrWhiteSpace(Nombre) && !string.IsNullOrWhiteSpace(Numero);
+            bool NumeroValido = long.TryParse(Numero, out _);
+            return !string.IsNullOrWhiteSpace(Nombre) && !string.IsNullOrWhiteSpace(Numero) && (Correo?.Contains("@")==true) && NumeroValido ;
         }
 
         private void GuardarUsuarioExecute(object parameter)
